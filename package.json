@@ -1,6 +1,6 @@
 {
   "name": "@nahkd123/streamliner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stream library for Web and NodeJS platform",
   "main": "dist/index.js",
   "scripts": {
