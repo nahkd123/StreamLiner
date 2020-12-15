@@ -1,6 +1,7 @@
 import WriteableStream from "../writeablestream.js";
+import ReadableMemoryStream from "./read.js";
 
-export default class WriteableBlobStream extends WriteableStream {
+export default class WriteableMemoryStream extends WriteableStream {
     arr: BlobPart[] = [];
 
     constructor() {
@@ -13,5 +14,7 @@ export default class WriteableBlobStream extends WriteableStream {
         else this.arr.push(new Uint8Array(arr));
     }
 
-    finish() {return new Blob(this.arr);}
+    toBlob() {return new Blob(this.arr);}
+    toArrayBuffer() {return this.toBlob().arrayBuffer();}
+    async toReadableStream() {return new ReadableMemoryStream(await this.toArrayBuffer())}
 }
